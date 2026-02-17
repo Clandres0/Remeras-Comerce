@@ -17,10 +17,11 @@ body{
   overflow-x:hidden
 }
 
+body.menu-open{overflow:hidden;}
+
 img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
 
-/* TOPBAR */
 .topbar{
   background:var(--primary);
   color:#fff;
@@ -30,7 +31,15 @@ a{text-decoration:none;color:inherit}
   font-weight:600
 }
 
-/* HEADER */
+.menu-toggle{
+  display:none;
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:22px;
+  cursor:pointer;
+}
+
 header{
   background:#000;
   color:#fff;
@@ -45,6 +54,16 @@ header{
   align-items:center;
   gap:16px;
   padding:12px 20px
+}
+
+header.scrolled{
+  padding:4px 0;
+  background:#000;
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
+}
+
+header.scrolled .logo{
+  font-size:18px;
 }
 
 .logo{font-weight:900;font-size:22px}
@@ -100,6 +119,36 @@ nav li{
 
 nav li:hover{color:var(--primary)}
 
+.nav-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s ease;
+  z-index:55;
+}
+
+.nav-overlay.active{
+  opacity:1;
+  visibility:visible;
+}
+
+nav a.active{
+  color:var(--primary);
+  position:relative;
+}
+
+nav a.active::after{
+  content:"";
+  position:absolute;
+  bottom:-6px;
+  left:0;
+  width:100%;
+  height:2px;
+  background:var(--primary);
+}
+
 .user-btn {
   background: none;
   border: none;
@@ -108,7 +157,6 @@ nav li:hover{color:var(--primary)}
   cursor: pointer;
 }
 
-/* MODAL */
 .auth-modal {
   position: fixed;
   inset: 0;
@@ -169,7 +217,6 @@ nav li:hover{color:var(--primary)}
   border-bottom: 2px solid var(--primary);
 }
 
-/* Forms */
 .auth-form {
   display: none;
   flex-direction: column;
@@ -218,12 +265,12 @@ nav li:hover{color:var(--primary)}
   color: white;
 }
 
-
-/* HERO */
 .hero{
   position:relative;
-  height:440px;
-  overflow:hidden
+  height:70vh;
+  overflow:hidden;
+  min-height: 320px;
+  max-height: 700px;
 }
 
 .slides{
@@ -402,16 +449,46 @@ footer li{margin-bottom:6px;font-size:14px}
 .social{
   display:flex;
   gap:12px;
-  font-size:22px
+  font-size:25px
 }
 
 .social a{
   transition:.3s
 }
 
-.social a:hover{
-  color:var(--primary);
+.social a:hover .fa-instagram{
+  color: #e4405f;
   transform:scale(1.2)
+}
+.social a:hover .fa-facebook{
+  color: #1877f2;
+  transform:scale(1.2)
+}
+
+.social i {
+  transition: .3s;
+}
+
+.whatsapp-float{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 55px;
+  height: 55px;
+  background:#25D366;
+  color:white;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  box-shadow:0 4px 10px rgba(0,0,0,.2);
+  transition:.3s ease;
+  z-index:999;
+}
+
+.whatsapp-float:hover{
+  transform:scale(1.1);
 }
 
 .footer-bottom{
@@ -441,12 +518,112 @@ footer li{margin-bottom:6px;font-size:14px}
   to{opacity:1;transform:none}
 }
 
-@media(max-width:900px){
+@media (max-width:900px){
+
   .header-main{
-    grid-template-columns:1fr;
-    gap:10px
+    grid-template-columns:auto 1fr auto;
   }
-  .header-actions{
-    justify-content:center
+
+  .menu-toggle{
+    display:block;
   }
+
+  nav{
+    position:fixed;
+    top:0;
+    left:0;
+    transform:translateX(-100%);
+    width:280px;
+    height:100vh;
+    background:#000;
+    transition:transform .35s ease;
+    padding-top:90px;
+    z-index:60;
+  }
+
+  nav.active{
+    transform:translateX(0);
+  }
+
+  nav ul{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:18px;
+    padding-left:20px;
+    font-size:18px;
+  }
+
 }
+
+
+@media (max-width:600px){
+
+  .topbar{
+    font-size:14px;
+    padding:5px;
+  }
+
+  .header-actions{
+    gap:12px;
+  }
+
+  .search input{
+    padding:8px 12px;
+  }
+
+  .hero{
+    height:300px;
+  }
+
+  .hero-content h1{
+    font-size:clamp(28px,8vw,40px);
+  }
+
+  .hero-content p{
+    font-size:14px;
+  }
+
+  .hero-content a{
+    padding:10px 22px;
+    font-size:14px;
+  }
+
+  .section{
+    padding:30px 10px;
+  }
+
+  .products{
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  }
+
+  .cart span{
+    font-size:10px;
+    padding:3px 7px;
+    top:-8px;
+    right:-10px;
+  }
+
+  .cat img{
+    height:150px;
+  }
+
+  .cat span{
+    font-size:20px;
+  }
+
+  .footer-main{
+    text-align:center;
+  }
+
+  .social{
+    justify-content:center;
+  }
+
+  .whatsapp-float{
+    width:50px;
+    height:50px;
+    font-size:24px;
+  }
+
+}
+

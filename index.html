@@ -24,6 +24,9 @@
 
 <header>
   <div class="header-main">
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+      <i class="fa-solid fa-bars"></i>
+    </button>
     <div class="logo">IZZI SPORTS</div>
     <div class="search">
       <input type="text" placeholder="¿Qué estás buscando?">
@@ -49,6 +52,7 @@
       <li><a href="#Personalizados">Personalizados</a></li>
     </ul>
   </nav>
+  <div class="nav-overlay" id="navOverlay"></div>
 </header>
 
 <div class="auth-modal" id="authModal">
@@ -89,22 +93,22 @@
   <div class="hero-content">
     <h1>Nueva Coleccion 2026</h1>
     <p>Todas las camisetas de tus jugadores favoritos</p>
-    <a href="#">Explorar</a>
+    <a href="#Remeras">Explorar</a>
   </div>
 </section>
 
 <section class="section">
   <h2>NOVEDADES</h2>
-  <div class="products" id="novedades"></div>
+  <div class="products" href="#Remeras" id="novedades"></div>
 </section>
 
 <section class="section">
   <h2>Categorías</h2>
   <div class="categories">
-    <div class="cat"><img src="img/camisetas.webp" alt=""><span>Remeras</span></div>
-    <div class="cat"><img src="img/camperas.jpg" alt=""><span>Camperas</span></div>
-    <div class="cat"><img src="img/pantalones.webp" alt=""><span>Pantalones</span></div>
-    <div class="cat"><img src="img/gorras.jpg" alt=""><span>Gorras</span></div>
+    <div class="cat" id="Remeras"><img src="img/camisetas.webp" alt="" loading="lazy"><span>Remeras</span></div>
+    <div class="cat" id="Camperas"><img src="img/camperas.jpg" alt="" loading="lazy"><span>Camperas</span></div>
+    <div class="cat" id="Pantalones"><img src="img/pantalones.webp" alt="" loading="lazy"><span>Pantalones</span></div>
+    <div class="cat" id="Gorras"><img src="img/gorras.jpg" alt="" loading="lazy"><span>Gorras</span></div>
   </div>
 </section>
 
@@ -122,10 +126,10 @@
     <div>
       <h4>Seguinos</h4>
       <div class="social">
-        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.instagram.com/izzi_sports" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
         <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-        <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-        <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <!--<a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a> -->
+        <a href="https://wa.me/5492214598466?text=Hola%20quiero%20informacion%20sobre%20sus%20productos" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
       </div>
     </div>
   </div>
